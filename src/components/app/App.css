@@ -1,11 +1,11 @@
 .App {
   display: flex;
   flex-grow: 1;
-
+  flex-direction: column;
   box-sizing: border-box;
 }
 
-.containerFlex {
+/* .containerFlex {
   display: flex;
   flex-direction: column;
-}
+} */

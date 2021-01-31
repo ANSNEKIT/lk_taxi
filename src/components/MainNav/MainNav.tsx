@@ -10,10 +10,10 @@ import MailIcon from "@material-ui/icons/Mail";
 export interface StandardComponentProps {
   classes: any;
   open: boolean;
-  handleDrawerClose: (e: React.MouseEvent) => void;
+  drawerClose: (e: React.MouseEvent) => void;
 }
 
-export default function MainNav({classes, open, handleDrawerClose}: StandardComponentProps) {
+export default function MainNav({classes, open, drawerClose}: StandardComponentProps) {
   return (
     <Drawer
       className={classes.drawer}
@@ -25,7 +25,7 @@ export default function MainNav({classes, open, handleDrawerClose}: StandardComp
       }}
     >
       <div className={classes.drawerHeader}>
-        <IconButton onClick={handleDrawerClose}>
+        <IconButton onClick={drawerClose}>
             <ChevronLeftIcon />
         </IconButton>
       </div>

@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import { AppBar, Toolbar, IconButton, Typography, Paper } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import logo from '../img/logo-02-blue.png';
+import logo from '../../img/logo-02-blue.png';
 
 
 export interface StandardComponentProps {

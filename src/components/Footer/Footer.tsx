@@ -11,7 +11,7 @@ const Footer = ({classes, open}: StandardComponentProps) => {
     <footer className={clsx(classes.footer, {
       [classes.footerShift]: open,}
     )}>
-      <div className="text-center">
+      <div className={classes.textCenter}>
         <span>
           ИП Носов А. С. 2021
         </span>

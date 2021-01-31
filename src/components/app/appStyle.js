@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-
-import {CssBaseline, Grid} from '@material-ui/core';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-
-import "./App.css";
-import Footer from "../Footer";
-import MainToolbar from "../MainToolbar";
-import MainNav from "../MainNav";
-import Main from "../Main";
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 
 const drawerWidth = 240;
 const footerHeight = 70;
 
-const useStyles = makeStyles((theme: Theme) =>
+export const useStyles = makeStyles((theme) =>
   createStyles({
+    containerFlex: {
+      display: 'flex',
+      flexDirection: 'column',
+      flexGrow: 1,
+    },
     appBar: {
       backgroundColor: '#fff',
       color: '#000',
@@ -62,10 +58,27 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      marginLeft: -drawerWidth,
+      marginLeft: 0,
       boxSizing: 'border-box',
     },
     contentShift: {
+      transition: theme.transitions.create('margin', {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+      marginLeft: drawerWidth,
+    },
+    contentLogin: {
+      flexGrow: 1,
+      padding: theme.spacing(3),
+      transition: theme.transitions.create('margin', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      marginLeft: -drawerWidth,
+      boxSizing: 'border-box',
+    },
+    contentLoginShift: {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
@@ -79,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     footer: {
       height: footerHeight,
-      backgroundColor: '#ccc',
+      backgroundColor: '#cfd6e4',
       padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
@@ -94,34 +107,9 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginLeft: 0,
-    }
+    },
+    textCenter: {
+      textAlign: "center",
+    },
   }),
 );
-
-
-const App = () => {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div className="App">
-      <CssBaseline />
-      <MainNav classes={classes} open={open} handleDrawerClose={handleDrawerClose} />
-      <div className="containerFlex">
-        <MainToolbar classes={classes} open={open} handleDrawerOpen={handleDrawerOpen} />
-        <Main classes={classes} open={open} />
-        <Footer classes={classes} open={open} />
-      </div> 
-    </div>
-  );
-}
-
-export default App;
