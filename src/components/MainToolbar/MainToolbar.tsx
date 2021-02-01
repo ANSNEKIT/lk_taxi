@@ -35,7 +35,7 @@ const MainToolbar = ({classes, open, handleDrawerOpen}: StandardComponentProps) 
         <img className={classes.logo} src={logo} alt={"logo"} height="40"/>
 
         <Typography variant="h6" noWrap>
-          Page Title 1
+          Подключение агрегаторов
         </Typography>
       </Toolbar>
     </AppBar>

@@ -16,7 +16,7 @@ const Main = ({ classes, open }: StandardComponentProps) => {
       })}
     >
       <div className={classes.drawerHeader} />
-      
+      <AddFiscal />
     </main>
   );
 };
