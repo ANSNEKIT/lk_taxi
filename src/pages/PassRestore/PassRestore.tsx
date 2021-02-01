@@ -1,18 +1,18 @@
 import React from "react";
 
 import "../../pages/Login/Login.css";
-import PassRestoreToolbar from "./PassRestoreToolbar";
 import PassRestoreMain from "./PassRestoreMain";
+import LoginToolbar from "../Login/LoginToolbar";
 
 export interface StandardComponentProps {
   classes: any;
-  isLogin: boolean;
+  passRestore: string;
 }
 
-const PassRestore = ({ classes, isLogin }: StandardComponentProps) => {
+const PassRestore = ({ classes, passRestore }: StandardComponentProps) => {
   return (
     <div className={classes.containerFlex}>
-      <PassRestoreToolbar classes={classes} isLogin={isLogin} />
+      <LoginToolbar classes={classes} title={passRestore} />
       <PassRestoreMain classes={classes} />
     </div>
   );

@@ -6,13 +6,14 @@ import LoginMain from "./LoginMain";
 
 export interface StandardComponentProps {
   classes: any;
+  login: string;
 }
 
-const Login = ({ classes }: StandardComponentProps) => {
+const Login = ({ classes, login }: StandardComponentProps) => {
   return (
     <div className={classes.containerFlex}>
-      <LoginToolbar classes={classes} isLogin={true} />
-      <LoginMain classes={classes} isLogin={true} />
+      <LoginToolbar classes={classes} title={login}/>
+      <LoginMain classes={classes} />
     </div>
   );
 };

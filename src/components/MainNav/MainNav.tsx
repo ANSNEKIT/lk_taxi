@@ -1,11 +1,35 @@
 import React from "react";
-
+import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
+import { Omit } from '@material-ui/types';
 import { Drawer, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {ChevronLeft, Extension, Receipt, SettingsInputComponent, ExitToApp} from "@material-ui/icons";
 
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+interface ListItemLinkProps {
+  icon?: React.ReactElement;
+  primary: string;
+  to: string;
+}
 
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+function ListItemLink(props: ListItemLinkProps) {
+  const { icon, primary, to } = props;
+
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef<any, Omit<RouterLinkProps, 'to'>>((itemProps, ref) => (
+        <RouterLink to={to} ref={ref} {...itemProps} />
+      )),
+    [to],
+  );
+
+  return (
+    <li>
+      <ListItem button component={renderLink}>
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} />
+      </ListItem>
+    </li>
+  );
+}
 
 export interface StandardComponentProps {
   classes: any;
@@ -26,19 +50,15 @@ export default function MainNav({classes, open, drawerClose}: StandardComponentP
     >
       <div className={classes.drawerHeader}>
         <IconButton onClick={drawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeft />
         </IconButton>
       </div>
       <Divider />
       <List>
-        {["Подключение агрегаторов", "Подключение касс", "Транзакции"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItemLink to="/" primary="Подключение агрегаторов" icon={<Extension />} />
+        <ListItemLink to="/add-fiscal" primary="Подключение касс" icon={<Receipt />} />
+        <ListItemLink to="/transaction" primary="Транзакции" icon={<SettingsInputComponent />} />
+        <ListItemLink to="/logout" primary="Выход" icon={<ExitToApp />} />
       </List>
     </Drawer>
   );

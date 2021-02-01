@@ -7,10 +7,10 @@ import logo from '../../img/logo-02-blue.png';
 
 export interface StandardComponentProps {
   classes: any;
-  isLogin: boolean;
+  title: string;
 }
 
-const LoginToolbar = ({classes, isLogin}: StandardComponentProps) => {
+const LoginToolbar = ({classes, title}: StandardComponentProps) => {
   return (
     <AppBar
       position="fixed"
@@ -18,11 +18,11 @@ const LoginToolbar = ({classes, isLogin}: StandardComponentProps) => {
     > 
       <Paper />
       <Toolbar>
-        
+
         <img className={classes.logo} src={logo} alt={"logo"} height="40"/>
 
         <Typography variant="h6" noWrap>
-          {isLogin ? "Вход" : "Регистрация"}
+          {title}
         </Typography>
       </Toolbar>
     </AppBar>

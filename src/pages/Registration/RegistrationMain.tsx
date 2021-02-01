@@ -1,6 +1,6 @@
 import React from "react";
-import { Link as RouterLink} from 'react-router-dom';
 import clsx from "clsx";
+import { Link as RouterLink} from 'react-router-dom';
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -34,17 +34,16 @@ export interface StandardComponentProps {
 }
 
 
-const PassRestoreMain = ({ classes }: StandardComponentProps) => {
+const RegistrationMain = ({ classes }: StandardComponentProps) => {
   const loginClasses = useStyles();
-  
+
   return (
     <main className={clsx(classes.contentLogin, classes.contentLoginShift)}>
       <div className={classes.drawerHeader} />
       <div className={classes.drawerHeader} />
       <div className={classes.textCenter}>
-        <Typography variant="h3">Восстановление пароля</Typography>
-        <Typography variant="subtitle1">
-          Укажите ваш email, который использовался как логин от вашей учетной записи
+        <Typography variant="h2">
+          Регистрация
         </Typography>
       </div>
 
@@ -54,21 +53,25 @@ const PassRestoreMain = ({ classes }: StandardComponentProps) => {
             className={clsx(loginClasses.margin)}
             fullWidth
             margin="normal"
+            placeholder="test@test.ru"
             id="email"
-            label="Email"
+            label="Логин"
             type="email"
             variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
         </div>
 
-        <div style={{ margin: "8px 8px 24px" }}>
-          <Link style={{"marginRight": "24px"}} component={RouterLink} to="/registration">
-            Регистрация
-          </Link>
-          <Link component={RouterLink} to="/login">
-            Войти
-          </Link>
-        </div>
+          <div style={{"margin": "8px 8px 24px"}}>
+            <Link style={{"marginRight": "24px"}} component={RouterLink} to="/login">
+              Войти
+            </Link>
+            <Link component={RouterLink} to="/pass-restore">
+              Восстановить пароль
+            </Link>
+          </div>
 
         <div>
           <Button
@@ -77,7 +80,7 @@ const PassRestoreMain = ({ classes }: StandardComponentProps) => {
             variant="contained"
             color="primary"
           >
-            Отправить
+            Зарегистрироваться
           </Button>
           <Button
             className={loginClasses.margin}
@@ -94,4 +97,4 @@ const PassRestoreMain = ({ classes }: StandardComponentProps) => {
   );
 };
 
-export default PassRestoreMain;
+export default RegistrationMain;

@@ -2,18 +2,19 @@ import React from "react";
 
 import "../../pages/Login/Login.css";
 import LoginToolbar from "../Login/LoginToolbar";
-import LoginMain from "../Login/LoginMain";
+import RegistrationMain from "./RegistrationMain";
+
 
 export interface StandardComponentProps {
   classes: any;
-  isLogin: boolean;
+  registration: string;
 }
 
-const Registration = ({ classes, isLogin }: StandardComponentProps) => {
+const Registration = ({ classes, registration }: StandardComponentProps) => {
   return (
     <div className={classes.containerFlex}>
-      <LoginToolbar classes={classes} isLogin={isLogin} />
-      <LoginMain classes={classes} isLogin={isLogin} />
+      <LoginToolbar classes={classes} title={registration} />
+      <RegistrationMain classes={classes} />
     </div>
   );
 };

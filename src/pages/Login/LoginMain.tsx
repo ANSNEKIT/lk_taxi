@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Link as RouterLink} from 'react-router-dom';
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -17,8 +18,6 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      /*  display: 'flex',
-      flexWrap: 'wrap', */
       width: 500,
       margin: "0 auto",
       marginTop: "3rem",
@@ -38,15 +37,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export interface StandardComponentProps {
   classes: any;
-  isLogin: boolean;
 }
-
 interface State {
   password: string;
   showPassword: boolean;
 }
 
-const LoginMain = ({ classes, isLogin }: StandardComponentProps) => {
+const LoginMain = ({ classes }: StandardComponentProps) => {
   const loginClasses = useStyles();
   const [values, setValues] = React.useState<State>({
     password: "",
@@ -75,10 +72,10 @@ const LoginMain = ({ classes, isLogin }: StandardComponentProps) => {
       <div className={classes.drawerHeader} />
       <div className={classes.textCenter}>
         <Typography variant="h2">
-          {isLogin ? "Вход" : "Регистрация"}
+          Вход
         </Typography>
         <Typography variant="subtitle1">
-          {isLogin ? "Войдите, используя свои учётные данные" : null}
+          Войдите, используя свои учётные данные
         </Typography>
       </div>
 
@@ -90,7 +87,7 @@ const LoginMain = ({ classes, isLogin }: StandardComponentProps) => {
             margin="normal"
             placeholder="Email"
             id="email"
-            label="Login"
+            label="Логин"
             type="email"
             variant="outlined"
             InputLabelProps={{
@@ -99,15 +96,14 @@ const LoginMain = ({ classes, isLogin }: StandardComponentProps) => {
           />
         </div>
 
-        { isLogin ?
-          <div>
+        <div>
           <FormControl
             fullWidth
             className={clsx(loginClasses.margin)}
             variant="outlined"
             margin="normal"
           >
-            <InputLabel htmlFor="passwd">Password</InputLabel>
+            <InputLabel htmlFor="passwd">Пароль</InputLabel>
             <OutlinedInput
               id="passwd"
               type={values.showPassword ? "text" : "password"}
@@ -128,29 +124,17 @@ const LoginMain = ({ classes, isLogin }: StandardComponentProps) => {
               labelWidth={70}
             />
           </FormControl>
-          <div style={{"margin": "8px 8px 24px"}}>
-            { isLogin ? 
-              ( 
-                <Link style={{"marginRight": "24px"}} href="#">
-                  Регистрация
-                </Link>
-              ) : null
-            }
-            <Link href="#">
-              Восстановить пароль
-            </Link>
-          </div>
-          
         </div>
-        : (
-          <div style={{"margin": "8px 8px 24px"}}>
-            <Link href="#">
-              Войти
-            </Link>
-          </div>
-        )
-        }
-        
+          
+        <div style={{"margin": "8px 8px 24px"}}>
+          <Link style={{"marginRight": "24px"}} component={RouterLink} to="/registration">
+            Регистрация
+          </Link>
+          <Link component={RouterLink} to="/pass-restore">
+            Восстановить пароль
+          </Link>
+        </div>
+
         <div>
           <Button
             className={loginClasses.margin}
@@ -158,13 +142,14 @@ const LoginMain = ({ classes, isLogin }: StandardComponentProps) => {
             variant="contained"
             color="primary"
           >
-            {isLogin ? "Войти" : "Зарегистрироваться"}
-            
+            Войти
           </Button>
           <Button
             className={loginClasses.margin}
             size="large"
             variant="outlined"
+            component={RouterLink}
+            to="/"
           >
             Отмена
           </Button>
