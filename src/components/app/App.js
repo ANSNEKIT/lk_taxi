@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import { CssBaseline } from "@material-ui/core";
-
 
 import {useStyles} from './appStyle';
 import "./App.css";
@@ -45,7 +43,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <CssBaseline />
       <MainNav classes={classes} open={open} drawerClose={handleDrawerClose} />
 
       {isAuth ?
