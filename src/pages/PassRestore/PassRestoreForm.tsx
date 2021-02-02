@@ -1,13 +1,8 @@
 import React from "react";
-import clsx from "clsx";
 import { Link as RouterLink} from 'react-router-dom';
+import clsx from "clsx";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import {
-  Button,
-  TextField,
-  Typography,
-  Link,
-} from "@material-ui/core";
+import { Button, TextField, Link } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,49 +24,32 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export interface StandardComponentProps {
-  classes: any;
-}
 
-
-const RegistrationMain = ({ classes }: StandardComponentProps) => {
+const PassRestoreForm = () => {
   const loginClasses = useStyles();
-
+  
   return (
-    <main className={clsx(classes.contentLogin, classes.contentLoginShift)}>
-      <div className={classes.drawerHeader} />
-      <div className={classes.drawerHeader} />
-      <div className={classes.textCenter}>
-        <Typography variant="h2">
-          Регистрация
-        </Typography>
-      </div>
-
       <form action="" method="get" className={clsx(loginClasses.root)}>
         <div>
           <TextField
             className={clsx(loginClasses.margin)}
             fullWidth
             margin="normal"
-            placeholder="test@test.ru"
             id="email"
-            label="Логин"
+            label="Email"
             type="email"
             variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
           />
         </div>
 
-          <div style={{"margin": "8px 8px 24px"}}>
-            <Link style={{"marginRight": "24px"}} component={RouterLink} to="/login">
-              Войти
-            </Link>
-            <Link component={RouterLink} to="/pass-restore">
-              Восстановить пароль
-            </Link>
-          </div>
+        <div style={{ margin: "8px 8px 24px" }}>
+          <Link style={{"marginRight": "24px"}} component={RouterLink} to="/registration">
+            Регистрация
+          </Link>
+          <Link component={RouterLink} to="/login">
+            Войти
+          </Link>
+        </div>
 
         <div>
           <Button
@@ -80,7 +58,7 @@ const RegistrationMain = ({ classes }: StandardComponentProps) => {
             variant="contained"
             color="primary"
           >
-            Зарегистрироваться
+            Отправить
           </Button>
           <Button
             className={loginClasses.margin}
@@ -93,8 +71,7 @@ const RegistrationMain = ({ classes }: StandardComponentProps) => {
           </Button>
         </div>
       </form>
-    </main>
   );
 };
 
-export default RegistrationMain;
+export default PassRestoreForm;

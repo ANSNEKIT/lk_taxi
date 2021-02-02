@@ -1,21 +1,26 @@
 import React from "react";
+import clsx from "clsx";
+import { Typography } from "@material-ui/core";
 
 import "../../pages/Login/Login.css";
-import LoginToolbar from "../Login/LoginToolbar";
-import RegistrationMain from "./RegistrationMain";
-
+import RegistrationForm from "./RegistrationForm";
 
 export interface StandardComponentProps {
   classes: any;
-  registration: string;
 }
 
-const Registration = ({ classes, registration }: StandardComponentProps) => {
+const Registration = ({ classes }: StandardComponentProps) => {
   return (
-    <div className={classes.containerFlex}>
-      <LoginToolbar classes={classes} title={registration} />
-      <RegistrationMain classes={classes} />
-    </div>
+    <main className={clsx(classes.contentLogin, classes.contentLoginShift)}>
+      <div className={classes.drawerHeader} />
+      <div className={classes.drawerHeader} />
+      <div className={classes.textCenter}>
+        <Typography variant="h2">
+          Регистрация
+        </Typography>
+      </div>
+      <RegistrationForm />
+    </main>
   );
 };
 

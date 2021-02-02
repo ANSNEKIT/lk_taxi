@@ -1,23 +1,23 @@
 import React from 'react';
+import clsx from "clsx";
 
-import Footer from "../../components/Footer/Footer";
-import MainToolbar from "../../components/MainToolbar/MainToolbar";
-import MainNav from "../../components/MainNav/MainNav";
-import Main from "../../components/Main/Main";
+import AddFiscal from '../../components/AddFiscal/AddFiscal';
 
 export interface StandardComponentProps {
   classes: any;
   open: boolean;
-  drawerClose: (e: React.MouseEvent) => void;
-  drawerOpen: (e: React.MouseEvent) => void;
 }
 
-const MainPage = ({ classes, open, drawerOpen }: StandardComponentProps) => {
+const MainPage = ({ classes, open }: StandardComponentProps) => {
   return (
-    <div className={classes.containerFlex}>
-      <MainToolbar classes={classes} open={open} handleDrawerOpen={drawerOpen} />
-      <Main classes={classes} open={open} />
-    </div>
+    <main
+      className={clsx(classes.content, {
+        [classes.contentShift]: open,
+      })}
+    >
+      <div className={classes.drawerHeader} />
+      <AddFiscal />
+    </main>
   )
 }
 

@@ -10,7 +10,6 @@ import {
   InputLabel,
   OutlinedInput,
   TextField,
-  Typography,
   Link,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
@@ -35,15 +34,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export interface StandardComponentProps {
-  classes: any;
-}
 interface State {
   password: string;
   showPassword: boolean;
 }
 
-const LoginMain = ({ classes }: StandardComponentProps) => {
+const LoginForm = () => {
   const loginClasses = useStyles();
   const [values, setValues] = React.useState<State>({
     password: "",
@@ -67,18 +63,6 @@ const LoginMain = ({ classes }: StandardComponentProps) => {
   };
 
   return (
-    <main className={clsx(classes.contentLogin, classes.contentLoginShift)}>
-      <div className={classes.drawerHeader} />
-      <div className={classes.drawerHeader} />
-      <div className={classes.textCenter}>
-        <Typography variant="h2">
-          Вход
-        </Typography>
-        <Typography variant="subtitle1">
-          Войдите, используя свои учётные данные
-        </Typography>
-      </div>
-
       <form action="" method="get" className={clsx(loginClasses.root)}>
         <div>
           <TextField
@@ -155,8 +139,7 @@ const LoginMain = ({ classes }: StandardComponentProps) => {
           </Button>
         </div>
       </form>
-    </main>
   );
 };
 
-export default LoginMain;
+export default LoginForm;

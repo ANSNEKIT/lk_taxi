@@ -1,20 +1,27 @@
 import React from "react";
+import clsx from "clsx";
+import { Typography } from "@material-ui/core";
 
-import "../../pages/Login/Login.css";
-import PassRestoreMain from "./PassRestoreMain";
-import LoginToolbar from "../Login/LoginToolbar";
+import PassRestoreForm from "./PassRestoreForm";
 
 export interface StandardComponentProps {
   classes: any;
   passRestore: string;
 }
 
-const PassRestore = ({ classes, passRestore }: StandardComponentProps) => {
+const PassRestore = ({ classes }: StandardComponentProps) => {
   return (
-    <div className={classes.containerFlex}>
-      <LoginToolbar classes={classes} title={passRestore} />
-      <PassRestoreMain classes={classes} />
-    </div>
+    <main className={clsx(classes.contentLogin, classes.contentLoginShift)}>
+      <div className={classes.drawerHeader} />
+      <div className={classes.drawerHeader} />
+      <div className={classes.textCenter}>
+        <Typography variant="h3">Восстановление пароля</Typography>
+        <Typography variant="subtitle1">
+          Укажите ваш email, на который отправить письмо для восстановления пароля
+        </Typography>
+      </div>
+      <PassRestoreForm />
+    </main>
   );
 };
 

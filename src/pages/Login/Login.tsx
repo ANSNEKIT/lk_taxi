@@ -1,20 +1,30 @@
 import React from "react";
-
+import {Typography} from "@material-ui/core";
+import clsx from "clsx";
 import "./Login.css";
-import LoginToolbar from "./LoginToolbar";
-import LoginMain from "./LoginMain";
+
+import LoginForm from "./LoginForm";
 
 export interface StandardComponentProps {
   classes: any;
-  login: string;
 }
 
-const Login = ({ classes, login }: StandardComponentProps) => {
+const Login = ({ classes }: StandardComponentProps) => {
   return (
-    <div className={classes.containerFlex}>
-      <LoginToolbar classes={classes} title={login}/>
-      <LoginMain classes={classes} />
-    </div>
+    <main className={clsx(classes.contentLogin, classes.contentLoginShift)}>
+      <div className={classes.drawerHeader} />
+      <div className={classes.drawerHeader} />
+      <div className={classes.textCenter}>
+        <Typography variant="h2">
+          Вход
+        </Typography>
+        <Typography variant="subtitle1">
+          Войдите, используя свои учётные данные
+        </Typography>
+      </div>
+
+      <LoginForm />
+    </main>
   );
 };
 

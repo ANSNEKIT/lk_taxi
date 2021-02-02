@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline';
+
 
 import './index.css';
 
@@ -11,9 +11,7 @@ import reportWebVitals from './reportWebVitals';
 const app = (
   <React.StrictMode>
     <BrowserRouter>
-      <ScopedCssBaseline>
-        <App />
-      </ScopedCssBaseline>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 )
