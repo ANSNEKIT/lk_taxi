@@ -35,7 +35,7 @@ const App = () => {
   );
 
   const transition = (props) => (
-    <Tranzactions />
+    <Tranzactions classes={classes} open={open} {...props} />
   );
 
   const login =(props) => (
